@@ -10,6 +10,7 @@ namespace SST_C_sharp_test_project.timer
     {
         public static void send_command(string cmd_command)
         {
+            // creates cmd process, and sends a string argument
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
@@ -21,6 +22,7 @@ namespace SST_C_sharp_test_project.timer
 
         public static string convert_number(string number)
         {
+            // Multiplies input with 3600 if it's a decimal number, returns null if it isn't
             double sleep_time;
             if (double.TryParse(number, out sleep_time))
             {
