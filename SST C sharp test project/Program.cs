@@ -16,17 +16,20 @@ namespace SST_C_sharp_test_project
             string user_input = Console.ReadLine();
 
             //attempts to convert input to time in seconds, will return null if unseccessful
-            string sleep_time = functions.convert_number(user_input); 
-            // If sleep time isn't null
-            if (!sleep_time.Equals(null))
+ 
+            // If sleep time is a decimal number
+            if (functions.is_number(user_input))
             {
+                //Convert to seconds
+                string sleep_time = functions.convert_number(user_input);
                 //Send shutdown signal
                 functions.send_command("shutdown -s -f -t " + sleep_time);
             }
-            // Testing else if
-            else if (user_input == "test")
+            // TODO: Make reboot menu
+            else if (user_input == "reboot")
             {
-                Console.WriteLine("You've entered the test block, good job!");
+                Console.WriteLine("Reboot menu");
+                
             }
             else
             {

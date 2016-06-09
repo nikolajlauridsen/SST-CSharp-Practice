@@ -20,17 +20,34 @@ namespace SST_C_sharp_test_project.timer
             process.Start();
         }
 
+        public static bool is_number(string input)
+        {
+            try
+            {
+                Convert.ToDouble(input);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static string convert_number(string number)
         {
-            // Multiplies input with 3600 if it's a decimal number, returns null if it isn't
-            double sleep_time;
-            if (double.TryParse(number, out sleep_time))
-            {
-                sleep_time = Convert.ToInt32(sleep_time * 3600);
-                string sleep_time_string = Convert.ToString(sleep_time);
-                return sleep_time_string;
+            try { 
+            // Converts a decimal string to hours (multiplied by 3600)
+            double sleep_time = Convert.ToDouble(number);
+            sleep_time = Convert.ToInt32(sleep_time * 3600);
+            string sleep_time_string = Convert.ToString(sleep_time);
+            return sleep_time_string;
             }
-            else return null;
+            catch
+            {
+                Console.WriteLine("Something went wrong...Incorrect input?\nWill shut down in default time (1 hour)");
+                return "3600";
+            }
+
         }
     }
 }
