@@ -15,17 +15,14 @@ namespace SST_C_sharp_test_project
             Console.Write("Input a decimal number: ");
             string user_input = Console.ReadLine();
 
-            double sleep_time;
-
-            if (double.TryParse(user_input, out  sleep_time) == true)
+            string sleep_time = functions.convert_number(user_input);
+            if (!sleep_time.Equals(null))
             {
-                sleep_time = Convert.ToInt32(sleep_time * 3600);
-                string sleep_time_string = Convert.ToString(sleep_time);
-                string cmd_command = "shutdown -s -f -t " + sleep_time_string;
-                Console.WriteLine("Sleep time: " + sleep_time_string);
-
-                timer.functions.send_command(cmd_command);
-
+                functions.send_command("shutdown -s -f -t " + sleep_time);
+            }
+            else if (user_input == "test")
+            {
+                Console.WriteLine("You've entered the test block, good job!");
             }
             else
             {
