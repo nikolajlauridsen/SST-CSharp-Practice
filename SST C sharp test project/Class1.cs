@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SST_C_sharp_test_project.functions
+namespace SST_C_sharp_test_project.timer
 {
     class functions
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SST_C_sharp_test_project.functions;
+using SST_C_sharp_test_project.timer;
 
 namespace SST_C_sharp_test_project
 {
@@ -24,7 +24,8 @@ namespace SST_C_sharp_test_project
                 string cmd_command = "shutdown -s -f -t " + sleep_time_string;
                 Console.WriteLine("Sleep time: " + sleep_time_string);
 
-                functions.functions.send_command(cmd_command);
+                timer.functions.send_command(cmd_command);
+
             }
             else
             {
