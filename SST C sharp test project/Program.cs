@@ -11,12 +11,14 @@ namespace SST_C_sharp_test_project
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Simple Sleep Timer C# edition");
+            Console.WriteLine("Simple Sleep Timer C# edition\n");
+            Console.WriteLine("Commands:\n" +
+                "decimal number  -  Shuts down the computer after the given time\n" + 
+                "reboot          -  Enters reboot menu\n" +
+                "cancel          -  Cancels previously scheduled action\n");
             Console.Write("Input a decimal number: ");
             string user_input = Console.ReadLine();
 
-            //attempts to convert input to time in seconds, will return null if unseccessful
- 
             // Shutdown
             if (functions.is_number(user_input))
             {
