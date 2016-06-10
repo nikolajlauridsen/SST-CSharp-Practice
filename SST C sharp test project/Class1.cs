@@ -47,7 +47,15 @@ namespace SST_C_sharp_test_project.timer
                 Console.WriteLine("Something went wrong...Incorrect input?\nWill shut down in default time (1 hour)");
                 return "3600";
             }
-
         }
+
+       public static int get_stamp()
+        {
+            TimeSpan t = DateTime.UtcNow - new DateTime(1970, 1, 1);
+            int secondsSinceEpoch = (int)t.TotalSeconds;
+            return secondsSinceEpoch;
+        }
+
+
     }
 }

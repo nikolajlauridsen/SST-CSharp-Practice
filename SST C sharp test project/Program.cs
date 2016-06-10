@@ -17,19 +17,39 @@ namespace SST_C_sharp_test_project
 
             //attempts to convert input to time in seconds, will return null if unseccessful
  
-            // If sleep time is a decimal number
+            // Shutdown
             if (functions.is_number(user_input))
             {
-                //Convert to seconds
+                // Convert input to time in seconds
                 string sleep_time = functions.convert_number(user_input);
                 //Send shutdown signal
                 functions.send_command("shutdown -s -f -t " + sleep_time);
             }
-            // TODO: Make reboot menu
+            // Reboot menu
             else if (user_input == "reboot")
             {
-                Console.WriteLine("Reboot menu");
-                
+                // Prompt for new input, this time time
+                Console.Write("Input a decimal number: ");
+                user_input = Console.ReadLine();
+                // Check if input is valid
+                if (functions.is_number(user_input))
+                { 
+                    // Convert input to time in seconds
+                    string sleep_time = functions.convert_number(user_input);
+                    // Send shutdown command
+                    functions.send_command("shutdown -r -f -t " + sleep_time);
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input");
+                }
+
+            }
+            // Cancel shutdown
+            else if (user_input == "cancel")
+            {
+                Console.WriteLine("Canceling shutdown.");
+                functions.send_command("shutdown -a");
             }
             else
             {
