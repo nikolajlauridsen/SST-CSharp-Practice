@@ -27,6 +27,10 @@ namespace SST_C_sharp_test_project
                 //Send shutdown signal
                 functions.send_command("shutdown -s -f -t " + sleep_time);
             }
+            // Testing regular expression
+            else if(functions.is_time(user_input)){
+                Console.WriteLine("Sucess!!");
+            }
             // Reboot menu
             else if (user_input == "reboot")
             {

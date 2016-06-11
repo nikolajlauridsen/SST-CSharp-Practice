@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace SST_C_sharp_test_project.timer
 {
@@ -33,7 +34,19 @@ namespace SST_C_sharp_test_project.timer
             }
         }
 
-        public static string convert_number(string number)
+        public static bool is_time(string input)
+        {
+            // Save regular expression patter as raw string
+            string pattern = @"\d+:\d+";
+            // Initiate new regular expression objet
+            Regex rgx = new Regex(pattern);
+            // Call is match funtion on rgx object
+            bool is_time = rgx.IsMatch(input);
+            // Return false/true
+            return is_time;
+        }
+
+       public static string convert_number(string number)
         {
             try { 
             // Converts a decimal string to hours (multiplied by 3600)
@@ -55,7 +68,6 @@ namespace SST_C_sharp_test_project.timer
             int secondsSinceEpoch = (int)t.TotalSeconds;
             return secondsSinceEpoch;
         }
-
 
     }
 }
