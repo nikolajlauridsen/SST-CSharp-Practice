@@ -61,6 +61,17 @@ namespace SST_C_sharp_test_project.timer
                 return "3600";
             }
         }
+        
+        public static string convert_time(string input)
+        {
+            char deliminator = ':';
+            string[] matches = input.Split(deliminator);
+            int hours = Convert.ToInt32(matches[0]);
+            int minutes = Convert.ToInt32(matches[1]);
+            int seconds = (hours*3600) + (minutes*60);
+            string seconds_string = Convert.ToString(seconds); 
+            return seconds_string;
+        }
 
        public static int get_stamp()
         {

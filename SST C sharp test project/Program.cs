@@ -20,17 +20,27 @@ namespace SST_C_sharp_test_project
             string user_input = Console.ReadLine();
 
             // Shutdown
-            if (functions.is_number(user_input))
+            if (functions.is_number(user_input) || functions.is_time(user_input))
             {
-                // Convert input to time in seconds
-                string sleep_time = functions.convert_number(user_input);
-                //Send shutdown signal
-                functions.send_command("shutdown -s -f -t " + sleep_time);
+                if (functions.is_number(user_input)){
+                    // Convert input to time in seconds
+                    string sleep_time = functions.convert_number(user_input);
+                    //Send shutdown signal
+                    functions.send_command("shutdown -s -f -t " + sleep_time);
+                }
+                else if (functions.is_time(user_input))
+                {
+                    // Conver input to time in seconds 
+                    string sleept_time = functions.convert_time(user_input);
+                    // Send shutdown signal
+                    functions.send_command("shutdown -s -f -t " + sleept_time);
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect input.");
+                }
             }
-            // Testing regular expression
-            else if(functions.is_time(user_input)){
-                Console.WriteLine("Sucess!!");
-            }
+
             // Reboot menu
             else if (user_input == "reboot")
             {
@@ -39,15 +49,22 @@ namespace SST_C_sharp_test_project
                 user_input = Console.ReadLine();
                 // Check if input is valid
                 if (functions.is_number(user_input))
-                { 
+                {
                     // Convert input to time in seconds
                     string sleep_time = functions.convert_number(user_input);
-                    // Send shutdown command
+                    //Send shutdown signal
                     functions.send_command("shutdown -r -f -t " + sleep_time);
+                }
+                else if (functions.is_time(user_input))
+                {
+                    // Conver input to time in seconds 
+                    string sleept_time = functions.convert_time(user_input);
+                    // Send shutdown signal
+                    functions.send_command("shutdown -r -f -t " + sleept_time);
                 }
                 else
                 {
-                    Console.WriteLine("Incorrect input");
+                    Console.WriteLine("Incorrect input.");
                 }
 
             }
